@@ -23,17 +23,18 @@
     <div class="container note">
       <h1 class="note__heading">Notes</h1>
 
-      <button class="notes__button">Add</button>
+      <button class="notes__button" id="addBtn">Add</button>
       <div class="notes__container note">
-        <div class="note__container hidden">
+        <div class="note__container hidden" id="noteContainer">
           <i class="fas fa-eraser"></i>
           <input type="checkbox" name="note" id="#" class="note__input" />
-          <label for="note" class="note__txt"
+          <label for="note" class="note__txt" id="noteTxt"
             >Lorem ipsum dolor sit amet.</label>
-          <button class="note__edit-btn">edit</button>
+          <button class="note__edit-btn" id="editBtn">edit</button>
         </div>
       </div>
-      <p class="note__clear">clear</p>
+      <p class="note__clear" id="clearNotes">clear</p>
+      <script type="module" src="interfaceUser.esm.js"></script>
     </div>
   </body>
 </html>
