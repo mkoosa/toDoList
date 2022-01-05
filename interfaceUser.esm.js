@@ -1,16 +1,11 @@
 import { NoteElement } from "./noteElement.esm.js";
 
 const ADD_BTN = "addBtn";
-const NOTE_CONTAINER = "noteContainer";
+const NOTE = "note";
 
 class InterfaceUser {
   createDomElements() {
     this.addBtn = this.#bindToElements(ADD_BTN);
-    // this.noteContainer = this.#bindToElements("noteContainer");
-    // this.noteContainer = this.#bindToElement;
-    this.noteTxt - this, this.#bindToElements("noteTxt");
-    this.editBtn = this.#bindToElements("editBtn");
-    this.clearNotes = this.#bindToElements("clearNotes");
     this.events();
   }
 
@@ -28,8 +23,9 @@ class InterfaceUser {
   }
 
   note = () => {
-    this.noteContainer = new NoteElement(this.#bindToElements(NOTE_CONTAINER));
-    console.log("this.noteContainer :", this.noteContainer);
+    this.noteElement = new NoteElement(this.#bindToElements(NOTE));
+
+    this.noteElement.noteElements();
   };
 }
 
