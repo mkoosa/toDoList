@@ -19,14 +19,19 @@
     />
     <title>Notes</title>
   </head>
-  <body>
-    <div class="container note">
+  <body id="body">
+    <!-- <div class="note__edit note__edit--hidden">
+      <input type="input" class="note__input--edit">
+      <button class="note__btn--edit">OK</button>
+    </div> -->
+    <div class="container note" id="container">
+      
       <h1 class="note__heading">Notes</h1>
       <div class="note__wrapper">
         <button class="note__button" id="addBtn">Add</button>
-        <input type="text" class="note__txt" />
+        <input type="text" class="note__txt" id="noteTxt" />
       </div>
-      <div class="note" id="note"></div>
+      <div class="notes" id="note"></div>
       <p class="note__clear" id="clearNotes">clear</p>
       <script type="module" src="interfaceUser.esm.js"></script>
     </div>

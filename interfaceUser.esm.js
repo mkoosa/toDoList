@@ -28,7 +28,6 @@ class InterfaceUser {
 
   creatNote() {
     this.addBtn.addEventListener("click", this.note);
-    // this.addBtn.addEventListener("click", this.inputTxt);
     this.addBtn.addEventListener("click", this.clearInputTxt);
   }
 
