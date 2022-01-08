@@ -1,4 +1,4 @@
-import { Note} from "./noteElement.esm.js";
+import { Note } from "./noteElement.esm.js";
 
 const ADD_BTN_ID = "addBtn";
 const NOTE_ID = "note";
@@ -8,7 +8,6 @@ const CONTAINER_ID = "container";
 class InterfaceUser {
   constructor() {
     this.allEvents = [];
-   
   }
   createDomElements() {
     this.addBtn = this.#bindToElements(ADD_BTN_ID);
@@ -28,7 +27,6 @@ class InterfaceUser {
 
   creatNote() {
     this.addBtn.addEventListener("click", this.note);
-  
   }
 
   note = () => {
@@ -38,7 +36,8 @@ class InterfaceUser {
     element.label.textContent = this.inputTxt();
     element.editBtn.addEventListener("click", this.noteElement.editTextNote);
     this.clearInputTxt();
-   
+
+    element.il.addEventListener("click", this.removeNote);
   };
 
   inputTxt = () => {
@@ -49,6 +48,11 @@ class InterfaceUser {
   clearInputTxt = () => {
     this.input.value = "";
   };
+
+  removeNote(e) {
+    const element = e.target.parentNode;
+    element.remove();
+  }
 }
 
 window.onload = function () {

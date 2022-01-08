@@ -1,5 +1,5 @@
 import { interfaceUser } from "./interfaceUser.esm.js";
-import { editNote } from "./noteElement.esm.js";
+import { editNote, CONTAINER_BLUR_CLASS } from "./noteElement.esm.js";
 
 const DIV_CLASS = "note__edit";
 export const INPUT_CLASS = "note__input--edit";
@@ -51,5 +51,7 @@ export class EditNote {
   }
   removeEditNote() {
     this.div.remove();
+    interfaceUser.container.classList.remove(CONTAINER_BLUR_CLASS);
+
   }
 }

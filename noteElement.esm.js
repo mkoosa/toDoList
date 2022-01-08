@@ -1,7 +1,7 @@
 import { interfaceUser } from "./interfaceUser.esm.js";
 import { EditNote } from "./editNote.esm.js";
 
-const CONTAINER_BLUR_CLASS = "container--blur";
+export const CONTAINER_BLUR_CLASS = "container--blur";
 const DIV_CLASS = "note__container";
 const I_ELEMENT_CLASS_FIRST = "fas";
 const I_ELEMENT_CLASS_SECOND = "fa-eraser";
