@@ -39,6 +39,7 @@ export class Note {
     this.#addChildElement(noteContainer, label);
 
     const editBtn = this.createDomElement("button", EDIT_BTN_CLASS);
+    editBtn.setAttribute("target", interfaceUser.allEvents.length);
     editBtn.innerText = "edit";
     this.#addChildElement(noteContainer, editBtn);
 
@@ -55,9 +56,26 @@ export class Note {
     element.appendChild(child);
   }
 
-  editTextNote = () => {
-    const editNote = new EditNote();
+  editTextNote = (e) => {
+    const index = e.target.getAttribute("target");
+    const changedText = e.target.previousSibling.innerText;
+    const noteToChange = interfaceUser.allEvents[index];
+    const changedElement = noteToChange.label;
+
     editNote.createEditForm();
+
+    const textInPlaceholder = interfaceUser.inputTxt();
+
+    editNote.textToChange(textInPlaceholder);
+
+    editNote.confirmChangedText(editNote, changedText);
+    editNote.confirmChangedText(changedElement);
+
+    const place = document.getElementById("edit");
+    place.placeholder = changedText;
+
     interfaceUser.container.classList.add(CONTAINER_BLUR_CLASS);
   };
 }
+
+export const editNote = new EditNote();
