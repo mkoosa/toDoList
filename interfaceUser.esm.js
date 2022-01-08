@@ -1,9 +1,10 @@
-import { Note } from "./noteElement.esm.js";
+import { Note, DIV_CLASS } from "./noteElement.esm.js";
 
 const ADD_BTN_ID = "addBtn";
 const NOTE_ID = "note";
 const NOTE_TXT_ID = "noteTxt";
 const CONTAINER_ID = "container";
+const CLEAR_ALL_ID = "clearNotes";
 
 class InterfaceUser {
   constructor() {
@@ -13,6 +14,7 @@ class InterfaceUser {
     this.addBtn = this.#bindToElements(ADD_BTN_ID);
     this.input = this.#bindToElements(NOTE_TXT_ID);
     this.container = this.#bindToElements(CONTAINER_ID);
+    this.clearAll = this.#bindToElements(CLEAR_ALL_ID);
     this.events();
   }
 
@@ -38,6 +40,7 @@ class InterfaceUser {
     this.clearInputTxt();
 
     element.il.addEventListener("click", this.removeNote);
+    this.clearAll.addEventListener("click", this.clearAllNotes);
   };
 
   inputTxt = () => {
@@ -53,6 +56,13 @@ class InterfaceUser {
     const element = e.target.parentNode;
     element.remove();
   }
+
+  clearAllNotes = () => {
+    this.allEvents.length = 0;
+    const notes = [...document.getElementsByClassName(DIV_CLASS)]
+    notes.forEach(el => el.remove());
+
+  };
 }
 
 window.onload = function () {
