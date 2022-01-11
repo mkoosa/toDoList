@@ -29,6 +29,7 @@ export class Note {
       I_ELEMENT_CLASS_FIRST,
       I_ELEMENT_CLASS_SECOND
     );
+    iElement.setAttribute("target", interfaceUser.allEvents.length)
     this.#addChildElement(noteContainer, iElement);
 
     const input = this.createDomElement("input", INPUT_CLASS);

@@ -1,7 +1,8 @@
 import { Note, DIV_CLASS } from "./noteElement.esm.js";
+import { ItemsStorage } from "./storage.esm.js";
 
 const ADD_BTN_ID = "addBtn";
-const NOTE_ID = "note";
+export const NOTE_ID = "note";
 const NOTE_TXT_ID = "noteTxt";
 const CONTAINER_ID = "container";
 const CLEAR_ALL_ID = "clearNotes";
@@ -9,6 +10,7 @@ const CLEAR_ALL_ID = "clearNotes";
 class InterfaceUser {
   constructor() {
     this.allEvents = [];
+    this.itemsStorage = null;
   }
   createDomElements() {
     this.addBtn = this.#bindToElements(ADD_BTN_ID);
@@ -16,6 +18,11 @@ class InterfaceUser {
     this.container = this.#bindToElements(CONTAINER_ID);
     this.clearAll = this.#bindToElements(CLEAR_ALL_ID);
     this.events();
+
+    if (!this.itemsStorage) return;
+
+    this.itemsStorage.creteLocalStorage();
+    console.log("this.itemsStorage :", this.itemsStorage);
   }
 
   events() {
@@ -41,28 +48,57 @@ class InterfaceUser {
 
     element.il.addEventListener("click", this.removeNote);
     this.clearAll.addEventListener("click", this.clearAllNotes);
+    this.prepareLocalStorage();
   };
-
+  
   inputTxt = () => {
     const textInput = this.input.value;
     return textInput;
   };
-
+  
   clearInputTxt = () => {
     this.input.value = "";
   };
-
-  removeNote(e) {
+  
+  removeNote = (e) => {
     const element = e.target.parentNode;
+    const ilElement = e.target;
     element.remove();
+    
+    const indexElementToRemove = e.target.getAttribute('target')
+    
+    console.log("this.allEvents :", this.allEvents);
+    
+    this.clearNote(this.allEvents, indexElementToRemove);
+    
+    console.log("this.allEvents :", this.allEvents);
+  };
+  
+  clearNote(elements, index) {    
+    elements.forEach((element, i) => {
+      if ( i == index) {
+        elements.splice(i, 1);
+      }
+      
+    });
+    
+    this.prepareLocalStorage();
+
+
   }
 
   clearAllNotes = () => {
     this.allEvents.length = 0;
-    const notes = [...document.getElementsByClassName(DIV_CLASS)]
-    notes.forEach(el => el.remove());
-
+    const notes = [...document.getElementsByClassName(DIV_CLASS)];
+    notes.forEach((el) => el.remove());
+    this.itemsStorage.clearStorage();
   };
+
+  prepareLocalStorage() {
+
+    this.itemsStorage = new ItemsStorage(interfaceUser.allEvents);
+    this.itemsStorage.creteLocalStorage();
+  }
 }
 
 window.onload = function () {
