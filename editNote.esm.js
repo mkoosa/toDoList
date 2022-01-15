@@ -1,9 +1,9 @@
 import { interfaceUser } from "./interfaceUser.esm.js";
 import { editNote, CONTAINER_BLUR_CLASS } from "./noteElement.esm.js";
 
+const BTN_CLASS = "note__btn--edit";
 const DIV_CLASS = "note__edit";
 export const INPUT_CLASS = "note__input--edit";
-const BTN_CLASS = "note__btn--edit";
 
 export class EditNote {
   createEditForm = () => {
