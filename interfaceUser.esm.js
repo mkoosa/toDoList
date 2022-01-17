@@ -18,6 +18,7 @@ class InterfaceUser {
     this.clearAll = this.bindToElements(CLEAR_ALL_ID);
     this.events();
     this.clearAll.addEventListener("click", this.clearStorage);
+    // this.editBtn.addEventListener("click", itemStorage.editItemFromStorage);
 
     if (!this.itemsStorage) {
       return;
@@ -48,6 +49,9 @@ class InterfaceUser {
     element.il.addEventListener("click", this.removeNote);
     this.clearAll.addEventListener("click", this.clearAllNotes);
     this.prepareLocalStorage();
+
+    console.log(' :', this.allEvents);
+
   };
 
   inputTxt = () => {
@@ -98,6 +102,8 @@ class InterfaceUser {
 window.onload = function () {
   itemStorage.getItemsFromStorage();
   interfaceUser.createDomElements();
+  itemStorage.htmlElements();
+
   
 };
 
