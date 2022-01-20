@@ -48,10 +48,9 @@ class InterfaceUser {
     this.clearInputTxt();
     element.il.addEventListener("click", this.removeNote);
     this.clearAll.addEventListener("click", this.clearAllNotes);
-    this.prepareLocalStorage();
+    itemStorage.createLocalStorage();
 
-    console.log(' :', this.allEvents);
-
+    console.log(" :", this.allEvents);
   };
 
   inputTxt = () => {
@@ -88,7 +87,6 @@ class InterfaceUser {
     notes.forEach((el) => el.remove());
   };
 
-  
   prepareLocalStorage() {
     itemStorage.createLocalStorage();
   }
@@ -96,15 +94,13 @@ class InterfaceUser {
   clearStorage() {
     itemStorage.clearStorage();
   }
-
 }
 
 window.onload = function () {
-  itemStorage.getItemsFromStorage();
   interfaceUser.createDomElements();
-  itemStorage.htmlElements();
+  itemStorage.getItemsFromStorage();
 
-  
+  console.log(" :", interfaceUser.allEvents);
 };
 
 export const interfaceUser = new InterfaceUser();

@@ -76,7 +76,11 @@ export class Note {
     place.placeholder = changedText;
 
     interfaceUser.container.classList.add(CONTAINER_BLUR_CLASS);
+    // localStorage.clear();
+    // interfaceUser.prepareLocalStorage();
   };
 }
 
 export const editNote = new EditNote();
+
+
