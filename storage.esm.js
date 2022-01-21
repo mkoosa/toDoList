@@ -1,7 +1,7 @@
 import { interfaceUser, NOTE_ID } from "./interfaceUser.esm.js";
 import { Note, DIV_CLASS, editNote } from "./noteElement.esm.js";
 
-export class ItemsStorage extends Note {
+export class ItemsStorage  {
   createLocalStorage() {
     const divNote = interfaceUser.bindToElements(NOTE_ID);
     const divNoteContainer = [...divNote.childNodes];
@@ -33,10 +33,12 @@ export class ItemsStorage extends Note {
 
   getItemsFromStorage() {
     const storage = JSON.parse(localStorage.getItem("note"));
+    console.log('storage :', storage);
 
     if (!storage) return;
 
     const frag = document.createRange().createContextualFragment(storage);
+    console.log('frag :', frag);
     const divNote = interfaceUser.bindToElements(NOTE_ID);
     divNote.appendChild(frag);
 

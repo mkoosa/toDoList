@@ -1,5 +1,6 @@
 import { interfaceUser } from "./interfaceUser.esm.js";
 import { editNote, CONTAINER_BLUR_CLASS } from "./noteElement.esm.js";
+import { itemStorage } from "./storage.esm.js";
 
 const BTN_CLASS = "note__btn--edit";
 const DIV_CLASS = "note__edit";
@@ -41,10 +42,10 @@ export class EditNote {
 
   confirmChangedText(element) {
     this.btn.addEventListener("click", () => {
-      // debugger
       element.textContent = this.input.value;
-      
+      console.log('interfaceUser.allEvents :', interfaceUser.allEvents);
       editNote.removeEditNote();
+      itemStorage.createLocalStorage();
     });
   }
 
@@ -57,3 +58,5 @@ export class EditNote {
 
   }
 }
+
+

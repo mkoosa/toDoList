@@ -18,7 +18,7 @@ class InterfaceUser {
     this.clearAll = this.bindToElements(CLEAR_ALL_ID);
     this.events();
     this.clearAll.addEventListener("click", this.clearStorage);
-    // this.editBtn.addEventListener("click", itemStorage.editItemFromStorage);
+    
 
     if (!this.itemsStorage) {
       return;
