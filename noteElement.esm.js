@@ -77,7 +77,7 @@ export class Note {
 
     interfaceUser.container.classList.add(CONTAINER_BLUR_CLASS);
     // localStorage.clear();
-    // interfaceUser.prepareLocalStorage();
+    interfaceUser.prepareLocalStorage();
   };
 }
 

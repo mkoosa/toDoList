@@ -41,6 +41,7 @@ export class EditNote {
 
   confirmChangedText(element) {
     this.btn.addEventListener("click", () => {
+      // debugger
       element.textContent = this.input.value;
       
       editNote.removeEditNote();
