@@ -3,11 +3,12 @@ import { EditNote } from "./editNote.esm.js";
 
 export const CONTAINER_BLUR_CLASS = "container--blur";
 export const DIV_CLASS = "note__container";
+
+const EDIT_BTN_CLASS = "note__edit-btn";
 const I_ELEMENT_CLASS_FIRST = "fas";
 const I_ELEMENT_CLASS_SECOND = "fa-eraser";
 const INPUT_CLASS = "note__input";
 const LABEL_CLASS = "note__txt";
-const EDIT_BTN_CLASS = "note__edit-btn";
 
 export class Note {
   constructor(element) {
@@ -64,17 +65,12 @@ export class Note {
     const changedElement = noteToChange.label;
 
     editNote.createEditForm();
-
     const textInPlaceholder = interfaceUser.inputTxt();
-
     editNote.textToChange(textInPlaceholder);
-
     editNote.confirmChangedText(editNote, changedText);
     editNote.confirmChangedText(changedElement);
-
     const place = document.getElementById("edit");
     place.placeholder = changedText;
-
     interfaceUser.container.classList.add(CONTAINER_BLUR_CLASS);
     interfaceUser.prepareLocalStorage();
   };

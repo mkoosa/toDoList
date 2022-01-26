@@ -4,8 +4,9 @@ import { itemStorage } from "./storage.esm.js";
 const ADD_BTN_ID = "addBtn";
 const CONTAINER_ID = "container";
 const CLEAR_ALL_ID = "clearNotes";
-export const NOTE_ID = "note";
 const NOTE_TXT_ID = "noteTxt";
+
+export const NOTE_ID = "note";
 
 class InterfaceUser {
   constructor() {
@@ -18,7 +19,6 @@ class InterfaceUser {
     this.clearAll = this.bindToElements(CLEAR_ALL_ID);
     this.events();
     this.clearAll.addEventListener("click", this.clearStorage);
-    
 
     if (!this.itemsStorage) {
       return;
@@ -49,8 +49,6 @@ class InterfaceUser {
     element.il.addEventListener("click", this.removeNote);
     this.clearAll.addEventListener("click", this.clearAllNotes);
     itemStorage.createLocalStorage();
-
-    console.log(" :", this.allEvents);
   };
 
   inputTxt = () => {
@@ -64,9 +62,7 @@ class InterfaceUser {
 
   removeNote = (e) => {
     const element = e.target.parentNode;
-    const ilElement = e.target;
     element.remove();
-
     const indexElementToRemove = e.target.getAttribute("target");
     this.clearNote(this.allEvents, indexElementToRemove);
   };
@@ -78,6 +74,7 @@ class InterfaceUser {
       }
     });
 
+    localStorage.clear();
     this.prepareLocalStorage();
   }
 
@@ -99,8 +96,6 @@ class InterfaceUser {
 window.onload = function () {
   interfaceUser.createDomElements();
   itemStorage.getItemsFromStorage();
-
-  console.log(" :", interfaceUser.allEvents);
 };
 
 export const interfaceUser = new InterfaceUser();
