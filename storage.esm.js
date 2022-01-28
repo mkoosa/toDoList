@@ -3,7 +3,7 @@ import {
   Note,
   DIV_CLASS,
   editNote,
-  CONTAINER_BLUR_CLASS,
+  CONTAINER_BLUR_CLASS
 } from "./noteElement.esm.js";
 
 export class ItemsStorage {
@@ -12,7 +12,6 @@ export class ItemsStorage {
     const divNoteContainer = [...divNote.childNodes];
     const elements = divNoteContainer;
     const allElements = [];
-
     elements.forEach((element) => {
       let elementToString = element.outerHTML;
       allElements.push(elementToString);
@@ -31,6 +30,7 @@ export class ItemsStorage {
     const noteItems = [...document.querySelectorAll(".note__container")];
     noteItems.forEach((noteitem) => noteitem.remove());
     localStorage.clear();
+
   }
 
   getItemsFromStorage() {
@@ -40,20 +40,18 @@ export class ItemsStorage {
     const divNote = interfaceUser.bindToElements(NOTE_ID);
     divNote.appendChild(frag);
     const allNotes = document.querySelectorAll("." + DIV_CLASS);
-    this.updatesAllEvents(allNotes);
+    this.#updatesAllEvents(allNotes);
   }
 
-  updatesAllEvents(elements) {
+  #updatesAllEvents(elements) {
     elements = [...elements];
     let allEvents = [];
-
     elements.forEach((element) => {
       const noteContainer = element;
       const il = noteContainer.firstChild;
       const input = il.nextSibling;
       const label = input.nextSibling;
       const editBtn = label.nextSibling;
-
       let el = {
         noteContainer: noteContainer,
         il: il,
@@ -66,10 +64,10 @@ export class ItemsStorage {
     });
 
     interfaceUser.allEvents = allEvents;
-    this.editElementFromStorage(allEvents);
+    this.#editElementFromStorage(allEvents);
   }
 
-  editElementFromStorage(elements) {
+  #editElementFromStorage(elements) {
     let editButtons = document.querySelectorAll(".note__edit-btn");
     editButtons = [...editButtons];
     editButtons.forEach((editButton) => {

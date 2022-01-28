@@ -23,16 +23,16 @@ export class EditNote {
     this.div.appendChild(this.input);
     this.div.appendChild(this.btn);
 
-    this.addAllClasses();
+    this.#addAllClasses();
   };
 
-  addAllClasses() {
-    this.addClassToElement(this.div, DIV_CLASS);
-    this.addClassToElement(this.input, INPUT_CLASS);
-    this.addClassToElement(this.btn, BTN_CLASS);
+  #addAllClasses() {
+    this.#addClassToElement(this.div, DIV_CLASS);
+    this.#addClassToElement(this.input, INPUT_CLASS);
+    this.#addClassToElement(this.btn, BTN_CLASS);
   }
 
-  addClassToElement(element, classElement) {
+  #addClassToElement(element, classElement) {
     element.classList.add(classElement);
   }
 
@@ -41,9 +41,7 @@ export class EditNote {
   }
 
   confirmChangedText(element) {
-
     this.btn.addEventListener("click", () => {
-      // debugger
       element.textContent = this.input.value;
       editNote.removeEditNote();
       itemStorage.createLocalStorage();
@@ -54,11 +52,7 @@ export class EditNote {
     this.input.placeholder = txt;
   }
   removeEditNote() {
-    debugger
     this.div.remove();
     interfaceUser.container.classList.remove(CONTAINER_BLUR_CLASS);
-
   }
 }
-
-
