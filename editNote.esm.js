@@ -38,17 +38,22 @@ export class EditNote {
 
   textToChange(text) {
     this.input.placeholder = text;
+    return text;
   }
 
   confirmChangedText(element) {
-    this.btn.addEventListener("click", () => {
+    this.btn.addEventListener("click", (e) => {
       element.textContent = this.input.value;
+      if(!element.textContent){
+        element.textContent = e.target.previousElementSibling.placeholder;
+      };
       editNote.removeEditNote();
       itemStorage.createLocalStorage();
     });
   }
 
   createPlacwHolderTxt(txt) {
+    console.log("🚀 ~ file: editNote.esm.js ~ line 70 ~ EditNote ~ createPlacwHolderTxt ~ txt", txt)
     this.input.placeholder = txt;
   }
   removeEditNote() {

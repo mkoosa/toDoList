@@ -39,7 +39,8 @@ class InterfaceUser {
     this.addBtn.addEventListener("click", this.note);
   }
 
-  note = () => {
+  note = (e) => {
+   
     this.noteElement = new Note(this.bindToElements(NOTE_ID));
     const element = this.noteElement.noteElements();
     this.allEvents.push(element);
